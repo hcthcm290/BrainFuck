@@ -1,0 +1,18 @@
+// GLOBAL
+Texture2D shaderTexture;
+SamplerState SampleType;
+
+
+struct PixelInput
+{
+    float4 position : SV_POSITION;
+    float2 coord : TEXCOORD;
+};
+
+
+float4 PShader(PixelInput input) : SV_TARGET
+{
+    float4 textureColor = shaderTexture.Sample(SampleType, input.coord);
+
+    return textureColor;
+}
